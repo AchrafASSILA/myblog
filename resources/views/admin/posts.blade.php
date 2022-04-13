@@ -93,7 +93,7 @@
                         {{-- <p class="text-xs text-secondary mb-0">Organization</p> --}}
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0">{{ Str::limit($post->body, 20) }}</p>
+                        <p class="text-xs font-weight-bold mb-0">{!! Str::limit($post->body, 20) !!}</p>
                       </td>
                       <td>
                         <p class="text-xs font-weight-bold mb-0">{{$post->created_at}}</p>

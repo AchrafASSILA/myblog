@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin;
+use App\Http\Controllers\Guest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -16,11 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
+Route::get('/', [Guest::class, 'index'])->name('blog.home');
+Route::get('/blog/{id}', [Guest::class, 'getPost'])->name('blog.single-post');
 
 // admin routes 
 Route::get('home', [Admin::class, 'index'])->name('admin.home')->middleware('auth');
@@ -39,6 +37,10 @@ Route::get('logout', function () {
 
     return Redirect::to('/');
 })->name('logout');
+
+
+
+
 // auth routes 
 Route::middleware([
     'auth:sanctum',

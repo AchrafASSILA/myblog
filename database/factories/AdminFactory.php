@@ -22,7 +22,7 @@ class AdminFactory extends Factory
     public function definition()
     {
         return [
-            'name' => 'admin',
+            'name' => 'achraf assila',
             'email' => 'admin@gmail.com',
             'is_admin' => 1,
             'email_verified_at' => now(),

@@ -61,7 +61,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                           <label for="body" class="form-control-label">Body</label>
-                          <textarea class="form-control"  rows="6" name="body" id="body" >{{$post->body}}</textarea>
+                          <textarea class="form-control"  rows="6" name="body" id="body" >{!! $post->body !!}</textarea>
                         </div>
                       </div>
                     <div class="col-md-12">

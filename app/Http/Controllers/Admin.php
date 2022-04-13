@@ -83,7 +83,7 @@ class Admin extends Controller
     {
         $this->validate($request, [
             'title' => 'required|min:5|max:100',
-            'body' => 'required|min:10|max:1000',
+            'body' => 'required|min:10|max:5000',
         ]);
     }
 }
