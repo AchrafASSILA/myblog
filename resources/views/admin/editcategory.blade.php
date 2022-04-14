@@ -44,40 +44,24 @@
             <div class="card">
               <div class="card-header pb-0">
                 <div class="d-flex align-items-center">
-                  <p class="mb-0">Create Post</p>
+                  <p class="mb-0">Create Category</p>
                 </div>
               </div>
               <div class="card-body">
-                <form action="{{route('admin.storePost')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('admin.updateCategory',$category->id)}}" method="post" >
+                    @method('PUT')
                     @csrf
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                          <label for="title" class="form-control-label">Title</label>
-                          <input class="form-control" type="text" name="title" id="title">
+                          <label for="name" class="form-control-label">Name</label>
+                          <input class="form-control" value="{{$category->name}}" type="text" name="name" id="name">
                         </div>
                       </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                          <label for="body" class="form-control-label">Body</label>
-                          <textarea class="form-control" rows="6" name="body" id="body" ></textarea>
-                        </div>
-                      </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                          <label for="categories" class="form-control-label">Category</label>
-                          <select class="form-control" name="category" id="categories" >
-                            @foreach ($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
-                            @endforeach
-
-                          </select>
-                        </div>
-                      </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                          <label for="image" class="form-control-label">Image</label>
-                            <input type="file" name="image" id="image" class="form-control" >  
+                          <label for="body" class="form-control-label">Description</label>
+                          <textarea class="form-control" rows="6" name="description" id="body" >{!! $category->description!!}</textarea>
                         </div>
                       </div>
                 </div>
@@ -92,7 +76,7 @@
                 @endforeach        
                 @endif
                 
-                <button class="btn btn-primary btn-sm ms-auto">Create Post</button>
+                <button class="btn btn-primary btn-sm ms-auto">Update Category</button>
                 </form>
                 </div>
               </div>

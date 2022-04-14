@@ -64,6 +64,21 @@
                           <textarea class="form-control"  rows="6" name="body" id="body" >{!! $post->body !!}</textarea>
                         </div>
                       </div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="categories" class="form-control-label">Category</label>
+                          <select class="form-control" name="category" id="categories" >
+                            @foreach ($categories as $category)
+                            @if ($category->id === $post->category->id)
+                            <option selected value="{{$category->id}}">{{$category->name}}</option>
+                            @else
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endif
+                            @endforeach
+
+                          </select>
+                        </div>
+                      </div>
                     <div class="col-md-12">
                         <div class="form-group">
                           <label for="image" class="form-control-label">Image</label>

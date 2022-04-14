@@ -22,29 +22,16 @@
                 <h3 class="s-header__nav-heading h6">Navigate to</h3>
 
                 <ul class="s-header__nav">
-                    <li class="current"><a href="index.html" title="">Home</a></li>
-                    {{-- <li class="has-children">
-                        <a href="#0" title="">Categories</a>
+                    <li class="current"><a href="/" title="">Home</a></li>
+                    <li class="has-children">
+                        <a href="#" title="">Categories</a>
                         <ul class="sub-menu">
-                            <li><a href="category.html">Design</a></li>
-                            <li><a href="category.html">Lifestyle</a></li>
-                            <li><a href="category.html">Photography</a></li>
-                            <li><a href="category.html">Vacation</a></li>
-                            <li><a href="category.html">Work</a></li>
-                            <li><a href="category.html">Health</a></li>
-                            <li><a href="category.html">Family</a></li>
-                            <li><a href="category.html">Relationship</a></li>
+                            @foreach ($categories as $category)
+                            <li><a href="{{route('blog.category',$category->id)}}">{{$category->name}}</a></li>
+                            @endforeach
+                            
                         </ul>
-                    </li> --}}
-                    {{-- <li class="has-children">
-                        <a href="#0" title="">Blog</a>
-                        <ul class="sub-menu">
-                            <li><a href="single-video.html">Video Post</a></li>
-                            <li><a href="single-audio.html">Audio Post</a></li>
-                            <li><a href="single-standard.html">Standard Post</a></li>
-                        </ul>
-                    </li> --}}
-                    {{-- <li><a href="styles.html" title="">Styles</a></li> --}}
+                    </li>
                     <li><a href="about.html" title="">About</a></li>
                     <li><a href="contact.html" title="">Contact</a></li>
                 </ul> <!-- end s-header__nav -->

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ class Admin extends Controller
     // show form post
     public function createPost()
     {
-        return view('admin.createPost');
+        $categories = Category::all();
+        return view('admin.createPost', compact('categories'));
     }
     // store data 
     public function storePost(Request $request)
@@ -36,6 +38,7 @@ class Admin extends Controller
             'title' => $request->title,
             'body' => $request->body,
             'image' => $image_name,
+            'category_id' => $request->category,
             'created_at' => date('Y-m-d H:i:s'),
         ]);
         return redirect()->route('admin.posts')->with([
@@ -46,7 +49,8 @@ class Admin extends Controller
     public function editPost($id)
     {
         $post = Post::find($id);
-        return view('admin.editPost', compact('post'));
+        $categories = Category::all();
+        return view('admin.editPost', compact('post', 'categories'));
     }
     public function updatePost($id, Request $request)
     {
@@ -62,6 +66,7 @@ class Admin extends Controller
             'title' => $request->title,
             'body' => $request->body,
             'image' => $post->image,
+            'category_id' => $request->category,
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
         return redirect()->route('admin.posts')->with([
@@ -83,7 +88,7 @@ class Admin extends Controller
     {
         $this->validate($request, [
             'title' => 'required|min:5|max:100',
-            'body' => 'required|min:10|max:5000',
+            'body' => 'required|min:10|max:15000',
         ]);
     }
 }

@@ -136,6 +136,14 @@
                                 </span>
                                     
                                 </div>
+                                <div class="entry__meta">
+                                    <span class="byline">Category:
+                                        <span class='author'>
+                                            <a href="#">{{$post->category->name}}</a>
+                                    </span>
+                                </span>
+                                    
+                                </div>
                             </div>
                             <div class="entry__excerpt">
                                 <p>

@@ -77,7 +77,7 @@
 
     <!-- comments
     ================================================== -->
-    <div class="comments-wrap">
+    {{-- <div class="comments-wrap">
 
         <div id="comments" class="row">
             <div class="column large-12">
@@ -283,7 +283,7 @@
 
         </div> <!-- end comment-respond -->
 
-    </div> <!-- end comments-wrap -->
+    </div> <!-- end comments-wrap --> --}}
 
 
 </section> <!-- end s-content -->
