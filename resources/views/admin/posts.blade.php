@@ -99,7 +99,7 @@
                         <p class="text-xs font-weight-bold mb-0">{{$post->created_at}}</p>
                       </td>
                      
-                      <td class="align-middle" style="display: flex;align-items:center">
+                      <td class="align-middle" style="display: flex;align-items:center;height:79.19px">
                         <a href="{{route('admin.editPost',$post->id)}}" class="text-secondary text-xs font-weight-bold" >
                           Edit
                         </a>

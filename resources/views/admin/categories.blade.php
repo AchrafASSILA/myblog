@@ -95,7 +95,7 @@
                         <p class="text-xs font-weight-bold mb-0">{{$category->created_at}}</p>
                       </td>
                      
-                      <td  class="align-middle" style="display: flex;align-items:center">
+                      <td  class="align-middle" style="display: flex;align-items:center;    height: 68.19px;">
                         <a href="{{route('admin.editcategory',$category->id)}}" class="text-secondary text-xs font-weight-bold" >
                           Edit
                         </a>
@@ -127,5 +127,5 @@
   }
     </style>
     {{$categories->links()}}
-  </main>
+</main>
 @endsection

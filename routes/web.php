@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\Category;
+use App\Http\Controllers\Comment;
 use App\Http\Controllers\Guest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -40,7 +41,8 @@ Route::get('edit-category/{id}', [Category::class, 'editcategory'])->name('admin
 Route::put('update-category/{id}', [Category::class, 'updateCategory'])->name('admin.updateCategory')->middleware('auth');
 Route::delete('delete-category/{id}', [Category::class, 'deleteCategory'])->name('admin.deleteCategory')->middleware('auth');
 
-
+// comment routes 
+Route::post('store-comment/{id}', [Comment::class, 'storeComment'])->name('guest.storeComment');
 
 
 // logout user 

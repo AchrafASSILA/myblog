@@ -32,11 +32,11 @@
 
                         <div class="entry-author meta-blk">
                             <div class="author-avatar">
-                                <img class="avatar" src="images/avatars/user-06.jpg" alt="">
+                                <img class="avatar" src="{{asset('assets/images/avatars/me.jpg')}}" alt="">
                             </div>
                             <div class="byline">
                                 <span class="bytext">Posted By</span>
-                                <a href="#0">Achraf Assila</a>
+                                <a href="#">Achraf Assila</a>
                             </div>
                         </div>
 
@@ -51,7 +51,7 @@
                                 </div> --}}
 
                                 <span>On</span>
-                                {{$post->created_at}}
+                                {{date('d M , Y', strtotime($post->created_at))}}
                             </div>
 
                             {{-- <div class="entry-tags meta-blk">
@@ -77,164 +77,41 @@
 
     <!-- comments
     ================================================== -->
-    {{-- <div class="comments-wrap">
+    <div class="comments-wrap">
 
         <div id="comments" class="row">
             <div class="column large-12">
 
-                <h3>5 Comments</h3>
+                <h3>{{count($post->comments)}} Comments</h3>
 
                 <!-- START commentlist -->
                 <ol class="commentlist">
 
+                    @foreach ($post->comments as $comment)
                     <li class="depth-1 comment">
 
                         <div class="comment__avatar">
-                            <img class="avatar" src="images/avatars/user-01.jpg" alt="" width="50" height="50">
+                            <img class="avatar" src="{{asset('assets/images/avatars/ach.png')}}" alt="" width="50" height="50">
                         </div>
-
+                            
                         <div class="comment__content">
-
+                            
                             <div class="comment__info">
-                                <div class="comment__author">Itachi Uchiha</div>
-
+                                <div class="comment__author">{{$comment->name}}</div>
+                                
                                 <div class="comment__meta">
-                                    <div class="comment__time">Oct 05, 2020</div>
-                                    <div class="comment__reply">
-                                        <a class="comment-reply-link" href="#0">Reply</a>
-                                    </div>
+                                    <div class="comment__time">{{date('d M , Y', strtotime($comment->created_at))}}</div>
                                 </div>
                             </div>
 
                             <div class="comment__text">
-                            <p>Adhuc quaerendum est ne, vis ut harum tantas noluisse, id suas iisque mei. Nec te inani ponderum vulputate,
-                            facilisi expetenda has et. Iudico dictas scriptorem an vim, ei alia mentitum est, ne has voluptua praesent.</p>
+                            <p>{{$comment->comment}}</p>
                             </div>
 
                         </div>
-
+                        
                     </li> <!-- end comment level 1 -->
-
-                    <li class="thread-alt depth-1 comment">
-
-                        <div class="comment__avatar">
-                            <img class="avatar" src="images/avatars/user-04.jpg" alt="" width="50" height="50">
-                        </div>
-
-                        <div class="comment__content">
-
-                            <div class="comment__info">
-                                <div class="comment__author">John Doe</div>
-
-                                <div class="comment__meta">
-                                    <div class="comment__time">Oct 05, 2020</div>
-                                    <div class="comment__reply">
-                                        <a class="comment-reply-link" href="#0">Reply</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="comment__text">
-                            <p>Sumo euismod dissentiunt ne sit, ad eos iudico qualisque adversarium, tota falli et mei. Esse euismod
-                            urbanitas ut sed, et duo scaevola pericula splendide. Primis veritus contentiones nec ad, nec et
-                            tantas semper delicatissimi.</p>
-                            </div>
-
-                        </div>
-
-                        <ul class="children">
-
-                            <li class="depth-2 comment">
-
-                                <div class="comment__avatar">
-                                    <img class="avatar" src="images/avatars/user-03.jpg" alt="" width="50" height="50">
-                                </div>
-
-                                <div class="comment__content">
-
-                                    <div class="comment__info">
-                                        <div class="comment__author">Kakashi Hatake</div>
-
-                                        <div class="comment__meta">
-                                            <div class="comment__time">Oct 05, 2020</div>
-                                            <div class="comment__reply">
-                                                <a class="comment-reply-link" href="#0">Reply</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="comment__text">
-                                        <p>Duis sed odio sit amet nibh vulputate
-                                        cursus a sit amet mauris. Morbi accumsan ipsum velit. Duis sed odio sit amet nibh vulputate
-                                        cursus a sit amet mauris</p>
-                                    </div>
-
-                                </div>
-
-                                <ul class="children">
-
-                                    <li class="depth-3 comment">
-
-                                        <div class="comment__avatar">
-                                            <img class="avatar" src="images/avatars/user-04.jpg" alt="" width="50" height="50">
-                                        </div>
-
-                                        <div class="comment__content">
-
-                                            <div class="comment__info">
-                                                <div class="comment__author">John Doe</div>
-
-                                                <div class="comment__meta">
-                                                    <div class="comment__time">Oct 04, 2020</div>
-                                                    <div class="comment__reply">
-                                                        <a class="comment-reply-link" href="#0">Reply</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="comment__text">
-                                            <p>Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est
-                                            etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.</p>
-                                            </div>
-
-                                        </div>
-
-                                    </li>
-
-                                </ul>
-
-                            </li>
-
-                        </ul>
-
-                    </li> <!-- end comment level 1 -->
-
-                    <li class="depth-1 comment">
-
-                        <div class="comment__avatar">
-                            <img class="avatar" src="images/avatars/user-02.jpg" alt="" width="50" height="50">
-                        </div>
-
-                        <div class="comment__content">
-
-                            <div class="comment__info">
-                                <div class="comment__author">Shikamaru Nara</div>
-
-                                <div class="comment__meta">
-                                    <div class="comment__time">Oct 03, 2020</div>
-                                    <div class="comment__reply">
-                                        <a class="comment-reply-link" href="#0">Reply</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="comment__text">
-                            <p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem.</p>
-                            </div>
-
-                        </div>
-
-                    </li>  <!-- end comment level 1 -->
+                    @endforeach
 
                 </ol>
                 <!-- END commentlist -->
@@ -253,25 +130,38 @@
                 <span>Your email address will not be published.</span>
                 </h3>
 
-                <form name="contactForm" id="contactForm" method="post" action="" autocomplete="off">
+                <form name="contactForm" id="contactForm" method="post" action="{{route('guest.storeComment',$post->id)}}" autocomplete="off">
                     <fieldset>
-
+                        @csrf
                         <div class="form-field">
-                            <input name="cName" id="cName" class="h-full-width h-remove-bottom" placeholder="Your Name" value="" type="text">
+                            <input name="name" id="cName" class="h-full-width h-remove-bottom" placeholder="Your Name" value="" type="text">
                         </div>
 
                         <div class="form-field">
-                            <input name="cEmail" id="cEmail" class="h-full-width h-remove-bottom" placeholder="Your Email" value="" type="text">
+                            <input name="email" id="cEmail" class="h-full-width h-remove-bottom" placeholder="Your Email" value="" type="text">
                         </div>
 
                         <div class="form-field">
-                            <input name="cWebsite" id="cWebsite" class="h-full-width h-remove-bottom" placeholder="Website" value="" type="text">
+                            <input name="website" id="cWebsite" class="h-full-width h-remove-bottom" placeholder="Website" value="" type="text">
                         </div>
 
                         <div class="message form-field">
-                            <textarea name="cMessage" id="cMessage" class="h-full-width" placeholder="Your Message"></textarea>
+                            <textarea name="comment" id="cMessage" class="h-full-width" placeholder="Your Message"></textarea>
                         </div>
-
+                        @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                                    <div class="alert-box alert-box--error">
+                                        <p>{{ $error }}</p>
+                                        <span class="alert-box__close"></span>
+                                    </div><!-- end error -->
+                        @endforeach
+                        @endif
+                        @if (Session::get('success'))
+                            <div class="alert-box alert-box--success">
+                                <p>{{Session::get('success')}}</p>
+                                <span class="alert-box__close"></span>
+                            </div><!-- end success -->
+                        @endif
                         <br>
                         <input name="submit" id="submit" class="btn btn--primary btn-wide btn--large h-full-width" value="Add Comment" type="submit">
 
@@ -283,7 +173,7 @@
 
         </div> <!-- end comment-respond -->
 
-    </div> <!-- end comments-wrap --> --}}
+    </div> <!-- end comments-wrap -->
 
 
 </section> <!-- end s-content -->
