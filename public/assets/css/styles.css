@@ -84,12 +84,11 @@
 /* ------------------------------------------------------------------- 
  * ## fonts
  * ------------------------------------------------------------------- */
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Serif+Text&family=Inter:wght@300;400;500;600;700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 :root {
-    --font-1: "Inter", sans-serif;
-    --font-2: "DM Serif Text", serif;
-    --font-3: "DM Serif Display", serif;
+    --font-1: "Ubuntu", sans-serif;
+    --font-2: "Ubuntu", sans-serif;
+    --font-3: "Ubuntu", sans-serif;
 
     /* monospace
      */
@@ -316,6 +315,7 @@ html {
 
 body {
     margin: 0;
+    font-family: "Ubuntu", sans-serif;
 }
 
 /* Render the `main` element consistently in IE. */
@@ -353,7 +353,7 @@ hr {
  * 2. Correct the odd `em` font sizing in all browsers. */
 
 pre {
-    font-family: monospace, monospace;
+    font-family: "Ubuntu", sans-serif;
     /* 1 */
     font-size: 1em;
     /* 2 */
@@ -395,8 +395,7 @@ strong {
 code,
 kbd,
 samp {
-    font-family: monospace, monospace;
-    /* 1 */
+    font-family: "Ubuntu", sans-serif; /* 1 */
     font-size: 1em;
     /* 2 */
 }

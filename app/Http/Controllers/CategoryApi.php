@@ -23,6 +23,32 @@ class CategoryApi extends Controller
     public function store(Request $request)
     {
         $this->validations($request);
+        $category =  Category::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'created_at' => date('Y-m-d H:i:s'),
+        ]);
+        return response()->json($category);
+    }
+    public function update(Request $request, $id)
+    {
+        $category = Category::find($id);
+        $this->validations($request);
+        $category->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+        return response()->json($category);
+    }
+    // delete post 
+    public function delete($id)
+    {
+        $category = Category::find($id);
+        $category->delete();
+        return response()->json([
+            'success' => 'category was deleted'
+        ]);
     }
     // validations types
     public function validations($request)
@@ -31,11 +57,5 @@ class CategoryApi extends Controller
             'name' => 'required|min:5|max:100',
             'description' => 'required|min:10|max:15000',
         ]);
-        $category =  Category::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'created_at' => date('Y-m-d H:i:s'),
-        ]);
-        return response()->json($category);
     }
 }

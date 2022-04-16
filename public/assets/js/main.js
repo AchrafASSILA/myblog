@@ -298,4 +298,7 @@ let active_link = document.querySelector(".active span");
 let spans = document.querySelectorAll(".page-item span");
 addClass(links);
 addClass(spans);
-active_link.classList.add("current");
+
+if (active_link !== null) {
+    active_link.classList.add("current");
+}

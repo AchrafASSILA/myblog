@@ -35,7 +35,7 @@
     
                     <div class="entry__thumb">
                         <a href="{{route('blog.single-post',$post->id)}}" class="thumb-link">
-                            <img src="{{asset('./uploads/'.$post->image)}}" 
+                            <img style="width: 100%;" src="{{asset('./uploads/'.$post->image)}}" 
                             srcset="{{asset('./uploads/'.$post->image)}}, {{asset('./uploads/'.$post->image)}}" alt="">
                         </a>
                     </div> <!-- end entry__thumb -->

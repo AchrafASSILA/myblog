@@ -29,3 +29,5 @@ Route::post('posts', [PostApi::class, 'storePost']);
 Route::get('categories', [CategoryApi::class, 'index']);
 Route::get('category/{id}', [CategoryApi::class, 'show']);
 Route::post('categories', [CategoryApi::class, 'store']);
+Route::put('categories/{id}', [CategoryApi::class, 'update']);
+Route::delete('categories/{id}', [CategoryApi::class, 'delete']);
