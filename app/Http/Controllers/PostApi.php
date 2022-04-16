@@ -24,6 +24,26 @@ class PostApi extends Controller
     {
         $this->validations($request);
     }
+    public function updatePost($id, Request $request)
+    {
+        $post = Post::find($id);
+        $post->update([
+            'title' => $request->title,
+            'body' => $request->body,
+            'category_id' => $request->category,
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+        return response()->json($post);
+    }
+    // delete post 
+    public function deletePost($id)
+    {
+        $post = Post::find($id);
+        $post->delete();
+        return response()->json([
+            'success' => 'post was deleted'
+        ]);
+    }
     // validations types
     public function validations($request)
     {

@@ -22,8 +22,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // posts api routes 
 Route::get('posts', [PostApi::class, 'posts']);
-Route::get('post/{id}', [PostApi::class, 'post']);
+Route::get('posts/{id}', [PostApi::class, 'post']);
 Route::post('posts', [PostApi::class, 'storePost']);
+Route::put('posts/{id}', [PostApi::class, 'updatePost']);
+Route::delete('posts/{id}', [PostApi::class, 'deletePost']);
 
 // categories api routes 
 Route::get('categories', [CategoryApi::class, 'index']);

@@ -37,7 +37,7 @@ class Admin extends Controller
         Post::create([
             'title' => $request->title,
             'body' => $request->body,
-            'image' => $image_name,
+            'image' => $request->has('image') ? $image_name : 'default.jpg',
             'category_id' => $request->category,
             'created_at' => date('Y-m-d H:i:s'),
         ]);
@@ -65,7 +65,7 @@ class Admin extends Controller
         $post->update([
             'title' => $request->title,
             'body' => $request->body,
-            'image' => $post->image,
+            'image' => $request->has('image') ? $image_name : 'default.jpg',
             'category_id' => $request->category,
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
@@ -89,6 +89,7 @@ class Admin extends Controller
         $this->validate($request, [
             'title' => 'required|min:5|max:100',
             'body' => 'required|min:10',
+            'image' => 'mimes:png,jpg,jpeg|max:2048',
         ]);
     }
 }
