@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin;
 use App\Http\Controllers\Category;
 use App\Http\Controllers\Comment;
 use App\Http\Controllers\Guest;
+use App\Http\Controllers\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,23 @@ Route::delete('delete-category/{id}', [Category::class, 'deleteCategory'])->name
 
 // comment routes 
 Route::post('store-comment/{id}', [Comment::class, 'storeComment'])->name('guest.storeComment');
+Route::get('comments', [Comment::class, 'index'])->name('admin.comments')->middleware('auth');
+Route::delete('comments{id}', [Comment::class, 'delete'])->name('admin.deleteComment')->middleware('auth');
+
+
+
+// profile routes 
+Route::get('profile', [Profile::class, 'index'])->name('admin.profile')->middleware('auth');
+
+
+
+
+
+
+
+
+
+
 
 
 // logout user 

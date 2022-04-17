@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class Comment extends Controller
 {
+    public function index()
+    {
+
+        $comments = ModelsComment::paginate(3);
+        return view('admin.comments', compact('comments'));
+    }
     // store comment in db 
     public function storeComment(Request $request, $id)
     {
@@ -22,6 +28,15 @@ class Comment extends Controller
         ]);
         return redirect()->route('blog.single-post', $id)->with([
             'success' => 'commment was added'
+        ]);
+    }
+    // delete comment 
+    public function delete($id)
+    {
+        $comment = ModelsComment::find($id);
+        $comment->delete();
+        return redirect()->route('admin.posts')->with([
+            'success' => 'comment was deleted'
         ]);
     }
     // validations types

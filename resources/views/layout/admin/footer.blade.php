@@ -159,16 +159,20 @@
     }
   </script>
   <!-- Github buttons -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  {{-- <script async defer src="https://buttons.github.io/buttons.js"></script> --}}
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{asset('admin/assets/js/argon-dashboard.min.js?v=2.0.2')}}"></script>
   <script src="https://cdn.ckeditor.com/ckeditor5/33.0.0/classic/ckeditor.js"></script>
   <script>
-    ClassicEditor
-        .create( document.querySelector( '#body' ) )
-        .catch( error => {
-            console.error( error );
-        } );
+    $body = document.querySelector( '#body' );
+    if($body !==null){
+
+      ClassicEditor
+          .create( $body )
+          .catch( error => {
+              console.error( error );
+          } );
+    }
   </script>
 </body>
 

@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\CategoryApi;
+use App\Http\Controllers\CommentApi;
 use App\Http\Controllers\PostApi;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,3 +35,11 @@ Route::get('category/{id}', [CategoryApi::class, 'show']);
 Route::post('categories', [CategoryApi::class, 'store']);
 Route::put('categories/{id}', [CategoryApi::class, 'update']);
 Route::delete('categories/{id}', [CategoryApi::class, 'delete']);
+
+
+// comments api routes 
+Route::get('comments', [CommentApi::class, 'index']);
+Route::get('comments/{id}', [CommentApi::class, 'show']);
+Route::post('comments', [CommentApi::class, 'store']);
+Route::put('comments/{id}', [CommentApi::class, 'update']);
+Route::delete('comments/{id}', [CommentApi::class, 'delete']);

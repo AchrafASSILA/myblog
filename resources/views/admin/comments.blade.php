@@ -51,15 +51,15 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Posts </h6>
-              <a href="{{route('admin.createCategory')}}" style="color: white;
+              <h6 style="margin-bottom: 30px">Commants </h6>
+              {{-- <a href="{{route('admin.createCategory')}}" style="color: white;
               background: #5e72e4;
               padding: 10px;
               border-radius: 5px;
               display: flex;
               width: fit-content;
               margin-left: auto;
-              margin-bottom: 10px;">Create Category</a>
+              margin-bottom: 10px;"></a> --}}
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -68,13 +68,16 @@
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Image</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Website</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Comment</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Article Name</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Created at</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($comments as $comment)
                         
                     <tr>
                       <td>
@@ -86,23 +89,32 @@
                         </div>
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0">{{$category->name}}</p>
+                        <p class="text-xs font-weight-bold mb-0">{{$comment->name}}</p>
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0">{!! Str::limit($category->description, 20) !!}</p>
+                        <p class="text-xs font-weight-bold mb-0">{{$comment->email}}</p>
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0">{{$category->created_at}}</p>
+                        <p class="text-xs font-weight-bold mb-0"> {{$comment->website ?$comment->website : 'no website' }}</p>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0">{{ $comment->comment}}</p>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0">{{ $comment->post->title}}</p>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0">{{$comment->created_at}}</p>
                       </td>
                      
                       <td  class="align-middle" style="display: flex;align-items:center;    height: 68.19px;">
-                        <a href="{{route('admin.editcategory',$category->id)}}" class="text-secondary text-xs font-weight-bold" >
+                        {{-- <a href="{{route('admin.editComment',$comment->id)}}" class="text-secondary text-xs font-weight-bold" >
                           Edit
-                        </a>
-                        <form action="{{route('admin.deleteCategory',$category->id)}}" method="post">
+                        </a> --}}
+                        <form action="{{route('admin.deleteComment',$comment->id)}}" method="post">
                           @csrf
                           @method('DELETE')
-                          <button style="background: transparent;border: none;" type="submit"  class="text-secondary text-xs font-weight-bold" >
+                          <button style="background: transparent;border: none;" onclick="return confirm('are you want to delete this comment')" type="submit"  class="text-secondary text-xs font-weight-bold" >
                             Delete
                           </button>
                         </form>
@@ -126,6 +138,6 @@
     list-style: none;
   }
     </style>
-    {{$categories->links()}}
+    {{$comments->links()}}
 </main>
 @endsection
