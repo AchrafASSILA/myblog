@@ -28,4 +28,14 @@ class Guest extends Controller
         $posts = Post::where('category_id', $category->id)->paginate(3);
         return view('blog.category', compact('posts', 'categories', 'category'));
     }
+    public function showAbout()
+    {
+        $categories = Category::all();
+        return view('blog.about', compact('categories'));
+    }
+    public function showContact()
+    {
+        $categories = Category::all();
+        return view('blog.contact', compact('categories'));
+    }
 }

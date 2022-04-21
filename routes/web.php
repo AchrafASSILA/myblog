@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [Guest::class, 'index'])->name('blog.home');
 Route::get('/blog/{id}', [Guest::class, 'getPost'])->name('blog.single-post');
 Route::get('/category/{id}', [Guest::class, 'category'])->name('blog.category');
+Route::get('/about', [Guest::class, 'showAbout'])->name('blog.showAbout');
+Route::get('/contact', [Guest::class, 'showContact'])->name('blog.showContact');
 
 // posts routes 
 Route::get('home', [Admin::class, 'index'])->name('admin.home')->middleware('auth');
